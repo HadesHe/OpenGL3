@@ -1,5 +1,6 @@
 package com.example.zhanghehe.myapplication
 
+import android.opengl.GLES30
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -15,12 +16,19 @@ import kotlin.collections.ArrayList
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
-        val nums= intArrayOf(1,2,3,45,5,78,100,90)
-        nums.reversedArray().forEach {
-            println(it)
-        }
+        var a=1
+
+
+        /**
+         * index
+         */
+        println(a)
 
     }
+
+
+
+    data class User(var name:String)
 
     @Test
     fun testRevesed(){
