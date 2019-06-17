@@ -21,6 +21,7 @@
 
         </activity>
         <activity android:name=".Lesson1Activity"></activity>
+        <activity android:name=".VertexBufferActivity"></activity>
     </application>
 
 </manifest>
