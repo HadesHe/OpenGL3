@@ -22,6 +22,10 @@ class ItemActivity: AppCompatActivity(), View.OnClickListener {
                 val intent=Intent(this,VertexBufferActivity::class.java)
                 startActivity(intent)
             }
+            R.id.btnVerArray->{
+                val intent=Intent(this,VertexArrayActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 
@@ -36,6 +40,9 @@ class ItemActivity: AppCompatActivity(), View.OnClickListener {
     private val btnVerBuf :Button  by lazy{
         findViewById(R.id.btnVerBuf) as Button
     }
+    private val btnVerArray:Button by lazy{
+        findViewById(R.id.btnVerArray) as Button
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -43,8 +50,7 @@ class ItemActivity: AppCompatActivity(), View.OnClickListener {
         btnTri.setOnClickListener(this)
         btnLsn1.setOnClickListener(this)
         btnVerBuf.setOnClickListener(this)
-
-
+        btnVerArray.setOnClickListener(this)
     }
 
 
