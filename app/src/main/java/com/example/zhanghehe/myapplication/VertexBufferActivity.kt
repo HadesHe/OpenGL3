@@ -64,10 +64,32 @@ class VertexBufferActivity :BaseOpenGL3Activity(){
             var vtxStride=4*(VERTEX_POS_SIZE+ VERTEX_COLOR_SIZE)
 
             if(mVBOIds[0]==0 && mVBOIds[1]==0){
+                /**
+                 * 返回未使用缓存去对象名称
+                 * n:返回的缓冲区对象名称数量
+                 * buffers:缓冲区对象返回时存储的位置
+                 * offset：存储位置的起始位置
+                 */
                 GLES30.glGenBuffers(2, mVBOIds,0)
                 mVertices1.position(0)
 
+                /**
+                 * 指定当前缓冲区对象
+                 * target：GL_ARRAY_BUFFER(顶点数据的缓冲区对象)
+                 *        GL_ELEMENT_ARRAY_BUFFER:(保存图元索引的缓冲区对象)
+                 */
                 GLES30.glBindBuffer(GLES30.GL_ARRAY_BUFFER, mVBOIds[0])
+                /**
+                 * 创建和初始化顶点数组数据或者元素数组数据存储
+                 * target：GL_ARRAY_BUFFER(顶点数据的缓冲区对象)
+                 *         GL_ELEMENT_ARRAY_BUFFER(图元索引的缓冲区对象)
+                 * size: 缓冲区数据存储大小，用字节数表示
+                 * data:应用程序提供的换春去数据的指针
+                 * usage：缓冲区对象中存储的数据提示（只做提示而不是保证）
+                 *       GL_STATIC_DRAW(缓冲区对象数据将被修改一次，使用多次)
+                 *
+                 *
+                 */
                 GLES30.glBufferData(GLES30.GL_ARRAY_BUFFER,vtxStride*numVertices,
                     mVertices1,GLES30.GL_STATIC_DRAW)
 
