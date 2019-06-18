@@ -68,8 +68,17 @@ class VertexArrayActivity:BaseOpenGL3Activity(){
             GLES30.glBufferData(GLES30.GL_ELEMENT_ARRAY_BUFFER,2* mIndicesData.size,
                 mIndices,GLES30.GL_STATIC_DRAW)
 
+            /**
+             * 创建新的数组对象
+             * n：返回数组对象的数量
+             * arrays:分配的顶点数组对象存储的位置
+             * offset：存储位置的起始位置
+             */
             GLES30.glGenVertexArrays(1, mVAOId,0)
 
+            /**
+             * 绑定顶点数组对象
+             */
             GLES30.glBindVertexArray(mVAOId[0])
 
             GLES30.glBindBuffer(GLES30.GL_ARRAY_BUFFER, mVBOId[0])
