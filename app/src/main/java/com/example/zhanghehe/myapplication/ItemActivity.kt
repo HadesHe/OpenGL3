@@ -18,6 +18,10 @@ class ItemActivity: AppCompatActivity(), View.OnClickListener {
                 val intent =Intent(this,Lesson1Activity::class.java)
                 startActivity(intent)
             }
+            R.id.btnVerBuf->{
+                val intent=Intent(this,VertexBufferActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 
@@ -28,12 +32,17 @@ class ItemActivity: AppCompatActivity(), View.OnClickListener {
     private val btnLsn1 :Button  by lazy{
         findViewById(R.id.btnLsn1) as Button
     }
+
+    private val btnVerBuf :Button  by lazy{
+        findViewById(R.id.btnVerBuf) as Button
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         btnTri.setOnClickListener(this)
         btnLsn1.setOnClickListener(this)
+        btnVerBuf.setOnClickListener(this)
 
 
     }
