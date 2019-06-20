@@ -49,11 +49,36 @@ class MapBufferActivity:BaseOpenGL3Activity(){
                 GLES30.glBufferData(GLES30.GL_ARRAY_BUFFER,vtxStride*numVertices,
                     null,GLES30.GL_STATIC_DRAW)
 
+                /**
+                 * 返回指向所有或者一部分缓冲区对象数据存储的指针
+                 * target:GL_ARRAY_BUFFER 顶点标志
+                 *        GL_ELEMENT_ARRAY_BUFFER 图元标志
+                 * offset: 缓冲区数据存储中的偏移量，字节算
+                 * length:需要映射的缓冲区数据的字节数
+                 * access:访问标志的喂域结合
+                 *       GL_MAP_READ_BIT：应用程序将从返回的指针读取
+                 *       GL_MAP_WRITE_BIT:应用程序将写入返回的指针
+                 *       GL_MAP_INVALIDATE_RANGE_BIT:指定范围内的缓冲区可以在返回指针之前由驱动程序放弃。不能与 GL_MAP_READ_BIT 组合使用
+                 *       GL_MAP_INVALIDATE_BUFFER_BIT: 整个缓冲区的内容可以在返回指针之前由去东城放弃。不能与 GL_MAP_READ_BIT 组合使用
+                 *       GL_MAP_FLUSH_EXPLICIT_BIT: 应用程序将明确地用 glFlashMappedBufferRange 刷新对映射范围子范围的操作。不能与 GL_MAP_WRITE_BIT 组合使用
+                 *       GL-MAP_UNSUNCHRONIZED_BIT: 驱动程序在返回缓冲区范围的指针之前不需要等待缓冲对象上的未决操作。如果有未决操作，则未决操作的结果和缓冲区对象上的任何未来操作都变成为定义
+                 */
                 vtxMappedBuf=(GLES30.glMapBufferRange(
                     GLES30.GL_ARRAY_BUFFER,0,vtxStride*numVertices,
                     GLES30.GL_MAP_WRITE_BIT or GLES30.GL_MAP_INVALIDATE_BUFFER_BIT
                 ) as ByteBuffer).order(ByteOrder.nativeOrder()).asFloatBuffer()
                 vtxMappedBuf.put(mVerticesData).position(0)
+
+
+                /**
+                 * 取消之前的缓冲区映射
+                 * target: 必须设置为 GL_ARRAY_BUFFER
+                 */
+                GLES30.glUnmapBuffer(GLES30.GL_ARRAY_BUFFER)
+
+                GLES30.glBindBuffer(GLES30.GL_ELEMENT_ARRAY_BUFFER, mVBOIds[1])
+                GLES30.glBufferData(GLES30.GL_ELEMENT_ARRAY_BUFFER,2*numIndices,
+                    null,GLES30.GL_STATIC_DRAW)
 
                 idxMappedBuf = (GLES30.glMapBufferRange(
                     GLES30.GL_ELEMENT_ARRAY_BUFFER, 0, 2 * numIndices,
