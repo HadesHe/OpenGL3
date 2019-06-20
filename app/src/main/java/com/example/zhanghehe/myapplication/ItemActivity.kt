@@ -26,6 +26,10 @@ class ItemActivity: AppCompatActivity(), View.OnClickListener {
                 val intent=Intent(this,VertexArrayActivity::class.java)
                 startActivity(intent)
             }
+            R.id.btnMaoBuffer ->{
+                val intent=Intent(this,MapBufferActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 
@@ -43,6 +47,9 @@ class ItemActivity: AppCompatActivity(), View.OnClickListener {
     private val btnVerArray:Button by lazy{
         findViewById(R.id.btnVerArray) as Button
     }
+    private val btnMapBuffer:Button by lazy {
+        findViewById(R.id.btnMaoBuffer) as Button
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -51,6 +58,7 @@ class ItemActivity: AppCompatActivity(), View.OnClickListener {
         btnLsn1.setOnClickListener(this)
         btnVerBuf.setOnClickListener(this)
         btnVerArray.setOnClickListener(this)
+        btnMapBuffer.setOnClickListener(this)
     }
 
 
