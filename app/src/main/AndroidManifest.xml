@@ -25,6 +25,7 @@
         <activity android:name=".VertexArrayActivity"></activity>
         <activity android:name=".MapBufferActivity"></activity>
         <activity android:name=".SimpleVertextActivity"></activity>
+        <activity android:name=".TextureWrapActivity"></activity>
     </application>
 
 </manifest>

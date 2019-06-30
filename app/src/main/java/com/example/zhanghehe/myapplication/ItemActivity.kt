@@ -34,6 +34,11 @@ class ItemActivity: AppCompatActivity(), View.OnClickListener {
                 val intent=Intent(this,SimpleVertextActivity::class.java)
                 startActivity(intent)
             }
+            R.id.btnTexWrap ->{
+                val intent=Intent(this,TextureWrapActivity::class.java)
+                startActivity(intent)
+            }
+
         }
     }
 
@@ -58,6 +63,10 @@ class ItemActivity: AppCompatActivity(), View.OnClickListener {
     private val btnSimpleVertext by lazy {
         findViewById(R.id.btnSimpleVertex) as Button
     }
+
+    private val btnTexWrap by lazy {
+        findViewById(R.id.btnTexWrap) as Button
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -68,6 +77,7 @@ class ItemActivity: AppCompatActivity(), View.OnClickListener {
         btnVerArray.setOnClickListener(this)
         btnMapBuffer.setOnClickListener(this)
         btnSimpleVertext.setOnClickListener(this)
+        btnTexWrap.setOnClickListener(this)
     }
 
 

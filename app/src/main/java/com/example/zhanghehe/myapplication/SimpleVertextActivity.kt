@@ -99,6 +99,7 @@ class SimpleVertextActivity:BaseOpenGL3Activity() {
 
         val vShaderStr="""
             #version 300 es
+//            uniforms used by the vertex shader
             uniform mat4 u_mvpMatrix;
             layout(location=0) in vec4 a_position;
             layout(location=1) in vec4 a_color;
