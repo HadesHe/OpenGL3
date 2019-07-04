@@ -137,10 +137,34 @@ class TextureWrapActivity:BaseOpenGL3Activity() {
 
             var pixels=genCheckImage(width,height,64)
 
+            /**
+             * n:生成纹理的数量
+             * textures: 保存n个纹理ID的无符号数组
+             */
             GLES30.glGenTextures(1,textureId,0)
 
+            /**
+             * target:将纹理对象绑定到 GL_TEXTURE_2D, GL_TEXTURE_3D,GL_TEXTURE_2D_ARRAY,GL_TEXTURE_CUBE_MAP
+             * textures：要绑定的纹理对象句柄
+             */
             GLES30.glBindTexture(GLES30.GL_TEXTURE_2D,textureId[0])
 
+            /**
+             * 用于加载2D和立方图纹理
+             * target：GL_TEXTURE_2D、GL_TEXTURE_CUBE_MAP
+             * level:要加载的mip级别，第一个级别为0，后续的mip贴图级别递增
+             * internalFormat:纹理存储的内部格式  GL_RGBA,GL_RGB,GL_LUMINANCE_ALPHA,GL_LUMINANCE,GL_ALPHA
+             * width:图像的宽度
+             * height:图像的高度
+             * border：保持与桌面的OpenGL接口兼容；默认为0
+             * format：输入的纹理格式 GL_RED,GL_RED_INTEGER,GL_RG,GL_RG_INTEGER,GL_RGB,GL_RGB_INTEGER,GL_RGBA,GL_RGBA_INTEGER,GL_DEPTH,GL_DEPTH_COMPONENT,
+             *                      GL_DEPTH_STENCIL,GL_LUMINACCE_ALPHA,GL_ALPHA
+             * type：输入像素数据的类型   GL_UNSIGNED_BYTE,GL_BYTE,GL_UNSIGNED_SHORT,GL_SHORT,GL_UNSIGNED_INT,GL_INT,GL_HALF_FLOAT,GL_FLOAT,
+             *                          GL_UNSIGNED_SHORT_5_6_5,GL_UNSIGNED_SHORT_4_4_4_4,GL_UNSIGNED_SHORT_5_5_5_1,
+             *                          GL_UNSIGNED_INT_2_10_10_REV,GL_UNSIGNED_INT_10F_11F_11F_REV,GL_UNSIGNED_INT_5_9_9_9_REV,GL_UNSIGNED_INT_24_8,
+             *                          GL_FLOAT_32_UNSIGNED_INT_24_8_REV,GL_UNSIGNED_SHORT_5_6_5
+             *
+             */
             GLES30.glTexImage2D(GLES30.GL_TEXTURE_2D,0,GLES30.GL_RGB,width,height,
                 0,GLES30.GL_RGB,GLES30.GL_UNSIGNED_BYTE,pixels)
 
