@@ -38,6 +38,10 @@ class ItemActivity: AppCompatActivity(), View.OnClickListener {
                 val intent=Intent(this,TextureWrapActivity::class.java)
                 startActivity(intent)
             }
+            R.id.btnMipMap2D ->{
+                val intent=Intent(this,MipMap2DActivity::class.java)
+                startActivity(intent)
+            }
 
         }
     }
@@ -67,6 +71,10 @@ class ItemActivity: AppCompatActivity(), View.OnClickListener {
     private val btnTexWrap by lazy {
         findViewById(R.id.btnTexWrap) as Button
     }
+
+    private val btnMipMap2D by lazy {
+        findViewById(R.id.btnMipMap2D) as Button
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -78,6 +86,7 @@ class ItemActivity: AppCompatActivity(), View.OnClickListener {
         btnMapBuffer.setOnClickListener(this)
         btnSimpleVertext.setOnClickListener(this)
         btnTexWrap.setOnClickListener(this)
+        btnMipMap2D.setOnClickListener(this)
     }
 
 

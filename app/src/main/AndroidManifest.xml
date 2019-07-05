@@ -26,6 +26,7 @@
         <activity android:name=".MapBufferActivity"></activity>
         <activity android:name=".SimpleVertextActivity"></activity>
         <activity android:name=".TextureWrapActivity"></activity>
+        <activity android:name=".MipMap2DActivity"></activity>
     </application>
 
 </manifest>
