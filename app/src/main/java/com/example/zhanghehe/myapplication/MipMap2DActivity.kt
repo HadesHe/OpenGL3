@@ -62,6 +62,14 @@ class MipMap2DActivity :BaseOpenGL3Activity(){
 
             GLES30.glUniform1i(mSamplerLoc,0)
 
+
+            /**
+             * target: GL_TEXTURE_2D、GL_TEXTURE_3D、GL_TETURE2D_ARRAY、GL_TEXTURE_CUBE_MAP
+             * pname与params
+             *      GL_TEXTURE_MAG_FILTER : GL_NEAREST或GL_LINEAR
+             *      GL_TEXTURE_MIN_FILTER : GL_NEAREST、GL_LINEAR、GL_NEAREST_MIPMAP_NEAREST、GL_NEAREST_MIPMAP_LINEAR、GL_LINEAR_MIPMAP_NEAREST或GL_LINEAR_MIPMAP_LINEAR
+             *      GL_TEXTURE_WRAP_S、GL_TEXTURE_R或GL_TEXTURE_WRAP_T:GL_REPEAT、GL_CLAMP_TO_EDGE或 GL——MIRRORED
+             */
             GLES30.glTexParameteri(GLES30.GL_TEXTURE_2D,GLES30.GL_TEXTURE_MIN_FILTER,GLES30.GL_NEAREST)
             GLES30.glUniform1f(mOffsetLoc,-0.6f)
             GLES30.glDrawElements(GLES30.GL_TRIANGLES,6,GLES30.GL_UNSIGNED_SHORT,mIndices)
@@ -138,6 +146,10 @@ class MipMap2DActivity :BaseOpenGL3Activity(){
                 height=newHeight
             }
 
+            /**
+             * target:GL_TEXTURE_2D、GL_TEXTURE_3D、GL_TEXTURE_2D_ARRAY、GL_TEXTURE_CUBE_MAP
+             * pname
+             */
             GLES30.glTexParameteri(GLES30.GL_TEXTURE_2D,GLES30.GL_TEXTURE_MIN_FILTER,
                 GLES30.GL_LINEAR_MIPMAP_NEAREST)
             GLES30.glTexParameteri(GLES30.GL_TEXTURE_2D,GLES30.GL_TEXTURE_MAG_FILTER,

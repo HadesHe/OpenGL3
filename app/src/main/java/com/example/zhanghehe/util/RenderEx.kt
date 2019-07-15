@@ -1,7 +1,10 @@
 package com.example.zhanghehe.util
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.opengl.GLES30
+import android.opengl.GLUtils
 import android.util.Log
 import java.io.ByteArrayOutputStream
 import java.io.IOException
@@ -182,4 +185,35 @@ fun loadProgram(vertShaderSrc:String,fragShaderSrc:String): Int {
     GLES30.glDeleteShader(vertexShader)
     GLES30.glDeleteShader(fragmentShader)
     return programObject
+}
+
+fun loadTextureFromAsset(context:Context,fileName:String,n:Int=1): Int {
+    var textureId=IntArray(1)
+
+    var bitmap: Bitmap?=null
+    var inputStream:InputStream?=null
+
+    try{
+        inputStream=context.assets.open(fileName)
+    }catch (ioe:IOException){
+        inputStream=null
+    }
+
+    if(inputStream==null){
+        return 0
+    }
+
+    bitmap=BitmapFactory.decodeStream(inputStream)
+
+    GLES30.glGenTextures(n,textureId,0)
+    GLES30.glBindTexture(GLES30.GL_TEXTURE_2D,textureId[0])
+
+    GLUtils.texImage2D(GLES30.GL_TEXTURE_2D,0,bitmap,0)
+
+    GLES30.glTexParameteri(GLES30.GL_TEXTURE_2D,GLES30.GL_TEXTURE_MIN_FILTER,GLES30.GL_LINEAR)
+    GLES30.glTexParameteri(GLES30.GL_TEXTURE_2D,GLES30.GL_TEXTURE_MAG_FILTER,GLES30.GL_LINEAR)
+    GLES30.glTexParameteri(GLES30.GL_TEXTURE_2D,GLES30.GL_TEXTURE_WRAP_S,GLES30.GL_CLAMP_TO_EDGE)
+    GLES30.glTexParameteri(GLES30.GL_TEXTURE_2D,GLES30.GL_TEXTURE_WRAP_T,GLES30.GL_CLAMP_TO_EDGE)
+
+    return textureId[0]
 }

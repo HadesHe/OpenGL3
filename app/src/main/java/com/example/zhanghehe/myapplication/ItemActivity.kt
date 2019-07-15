@@ -43,6 +43,11 @@ class ItemActivity: AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             }
 
+            R.id.btnMulTexture ->{
+                val intent=Intent(this,MultiTextureActivity::class.java)
+                startActivity(intent)
+            }
+
         }
     }
 
@@ -75,6 +80,10 @@ class ItemActivity: AppCompatActivity(), View.OnClickListener {
     private val btnMipMap2D by lazy {
         findViewById(R.id.btnMipMap2D) as Button
     }
+
+    private val btnMulTexture by  lazy {
+        findViewById(R.id.btnMulTexture) as Button
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -87,6 +96,7 @@ class ItemActivity: AppCompatActivity(), View.OnClickListener {
         btnSimpleVertext.setOnClickListener(this)
         btnTexWrap.setOnClickListener(this)
         btnMipMap2D.setOnClickListener(this)
+        btnMulTexture.setOnClickListener(this)
     }
 
 

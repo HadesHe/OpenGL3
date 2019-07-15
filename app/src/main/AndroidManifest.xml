@@ -27,6 +27,7 @@
         <activity android:name=".SimpleVertextActivity"></activity>
         <activity android:name=".TextureWrapActivity"></activity>
         <activity android:name=".MipMap2DActivity"></activity>
+        <activity android:name=".MultiTextureActivity"></activity>
     </application>
 
 </manifest>
